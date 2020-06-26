@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+ <head>
+  <title>VueJS - Life Cycle</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ </head>
+ <body>
+  <div id="life-cycle">
+   <h1>Hello {{ name }}</h1>
+
+   <ul>
+    <li v-for="state in states">{{state.sigla}} - {{ state.nome }}</li>
+   </ul>
+  </div>
+  
+  <!-- development version, includes helpful console warnings -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+  <script>
+   let app = new Vue({
+    el: '#life-cycle',
+    data: {
+     name: 'HCode Treinamentos',
+     states: []
+    },
+    beforeCreate() {
+     console.log('beforeCreate')
+     fetch('https://servicodados.ibge.gov.br/api/v1/localidades/estados')
+     .then(response => {
+      response.json().then(data => {
+       this.states = data;
+      })
+     })
+     .catch(err => {
+      console.log(err);
+     })
+    },
+    created() {
+     console.log('created')
+    },
+    beforeMount() {
+     console.log('beforeMount')
+    },
+    mounted() {
+     console.log('mounted')
+    },
+    beforeUpdate() {
+     console.log('beforeUpdate')
+    },
+    updated() {
+     console.log('updated')
+    },
+    beforeDestroy() {
+     console.log('beforeDestroy')
+    },
+    destroyed() {
+     console.log('destroyed')
+    }
+   })
+  </script>
+ </body>
+</html>

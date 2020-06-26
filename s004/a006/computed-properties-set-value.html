@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+ <head>
+  <title>VueJS - Propiedades Armazenadas - Definir Valor</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ </head>
+ <body>
+  <div id="computed-properties-set-value">
+   <h2>Nome: {{ person.firstName }} {{ person.lastName }}</h2>
+   <h2>Nome Completo: {{ fullName }}</h2>
+  </div>
+  
+  <!-- development version, includes helpful console warnings -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+  <script>
+   let app = new Vue({
+    el: '#computed-properties-set-value',
+    data: {
+     person: {
+      firstName: 'Djalma',
+      lastName: 'Sindeaux'
+     }
+    },
+    computed: {
+     fullName: {
+      get: function() {
+       return `${this.person.firstName} ${this.person.lastName}`;
+      },
+      set: function(newValue) {
+       let name = newValue.split(' ');
+       this.person.firstName = name[0];
+       this.person.lastName = name[1];
+      }
+     }
+    }
+   })
+  </script>
+ </body>
+</html>
