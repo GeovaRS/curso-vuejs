@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+ <head>
+  <title>VueJS - Diretiva v-html</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ </head>
+ <body>
+  <div id="directives">
+   <!-- Renderização Dinâmica de HTML pode criar brechas de segurança -->
+   <!-- Usar em ambientes seguros e com cautela, afim de evitar ataques XSS -->
+   <div v-html="headerHTML"></div>
+  </div>
+
+  <!-- development version, includes helpful console warnings -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+ 
+  <script>
+   let app = new Vue({
+    el: '#directives',
+    data: {
+     headerHTML: `
+      <header>
+       <h1 style="text-align: center">HCode Treinamentos</h1>
+       <img src="./svg/logo-hcode.svg" style="margin: auto 30%" />
+      </header>
+     `
+    }
+   })
+  </script>
+ </body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+ <head>
+  <title>VueJS - Diretivas Personalizadas - Receber múltiplos valores</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ </head>
+ <body>
+  <div id="directives">
+   <h4 v-upper>{{ name }}</h4>
+
+   <h4>hello world {{ name }}</h4>
+
+   <!-- <h4 v-custom:[argument]="distance">{{ name }}</h4> -->
+   <!-- <h4 v-custom="{ direction: argument, distance: distance }">{{ name }}</h4> -->
+   <h4 v-custom="{ direction: argument, distance }">{{ name }}</h4>
+  </div>
+
+  <!-- development version, includes helpful console warnings -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue2-filters/dist/vue2-filters.min.js"></script>
+ 
+  <script>
+   Vue.directive('upper', {
+    inserted(el) {
+     el.innerText = el.innerText.toUpperCase();
+    }
+   })
+
+   function setDirection(element, binding) {
+    element.style.margin = 0;
+
+    // let direction = binding.arg.toLowerCase();
+    let direction = binding.value.direction.toLowerCase();
+    // let value = binding.value;
+    let value = binding.value.distance;
+
+    switch(direction) {
+     case 'top':
+     case 'right':
+     case 'bottom':
+     case 'left':
+      let newDirection = direction.charAt(0).toUpperCase() + direction.slice(1);
+      console.log(`element.style.margin${newDirection} = value + 'px'`);
+      eval(`element.style.margin${newDirection} = value + 'px'`);
+      
+     break;
+
+     default:
+      console.error('Infomar uma opção correta');
+    }
+   }
+
+   let app = new Vue({
+    el: '#directives',
+    data: {
+     name: 'HCode',
+     argument: 'left',
+     distance: 150
+    },
+    directives: {
+     custom: {
+      bind(element, binding, vnode) {
+       setDirection(element, binding);
+      },
+      update(element, binding, vnode, oldvnode) {
+       setDirection(element, binding);
+      }
+     }
+    }
+   })
+  </script>
+ </body>
+</html>

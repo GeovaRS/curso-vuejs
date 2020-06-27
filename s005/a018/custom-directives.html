@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+ <head>
+  <title>VueJS - Diretivas Personalizadas</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ </head>
+ <body>
+  <div id="directives">
+   <h4 v-upper>{{ name }}</h4>
+   <h4 v-capitalize>hello world {{ name }}</h4>
+  </div>
+
+  <!-- development version, includes helpful console warnings -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue2-filters/dist/vue2-filters.min.js"></script>
+ 
+  <script>
+   Vue.directive('upper', {
+    inserted(el) {
+     el.innerText = el.innerText.toUpperCase();
+    }
+   })
+
+   let app = new Vue({
+    el: '#directives',
+    data: {
+     name: 'HCode'
+    },
+    directives: {
+     // capitalize: function(element) {
+     capitalize: {
+      bind(element) {
+       console.log('Binded - Vinculado a um elemento');
+      },
+      inserted(element) {
+       console.log('Inserted - Elemento inserido na página');
+
+       let words = element.innerText.split(' ');
+       words.forEach((text, index) => {
+        words[index] = text.charAt(0).toUpperCase() + text.slice(1);
+       });
+       element.innerText = words.join(' ');
+      },
+      update(element) {
+       console.log('Updated - Elemento Atualizado');
+      },
+      unbind(element) {
+       console.log('Unbinded - Elemento Desvinculado');
+      },
+      componentUpdated(element) {
+       console.log('ComponentUpdated - Componente Atualizado');
+      }
+     }
+    }
+   })
+  </script>
+ </body>
+</html>

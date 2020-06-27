@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+ <head>
+  <title>VueJS - v-slot</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ </head>
+ <body>
+  <div id="directives">
+   <!-- Usada no contexto de componentes do VueJS -->
+   <text-component>
+    <template  v-slot:header>
+     <h2>Cabeçalho do Site</h2>
+    </template>
+    <template v-slot:paragrafo>
+     Gláucio Daniel
+    </template>
+   </text-component>
+   <text-component>
+    <template v-slot:paragrafo>
+     João Rangel
+    </template>
+   </text-component>
+   <text-component>
+    <template v-slot:paragrafo>
+     Manoel
+    </template>
+   </text-component>
+  </div>
+
+  <!-- development version, includes helpful console warnings -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+ 
+  <script>
+   Vue.component('text-component', {
+    template: `
+     <div>
+      <header>
+       <slot name="header"></slot>
+      </header>
+      <p>
+       <slot name="paragrafo"></slot>
+      </p>
+     </div>
+    `
+   })
+
+   let app = new Vue({
+    el: '#directives',
+    data: {
+     
+    }
+   })
+  </script>
+ </body>
+</html>

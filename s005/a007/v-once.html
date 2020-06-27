@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+ <head>
+  <title>VueJS - Diretiva v-once</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ </head>
+ <body>
+  <div id="directives">
+   <!-- Criptonita do VueJS, por analogia ao personagem Super Man -->
+   <!-- Que, quando exposto ao elemento, perde seus poderes de Super Heroi -->
+   <!-- Elemento se torna estático sem os poderes -->
+   <h1>{{ person.name }}</h1>
+   <!-- A propriedade person.age, se torna estática. -->
+   <!-- Não reflete as alterações subsequentes feitas em seu valor -->
+   <!-- ao renderizar o elemento HTML div -->
+   <div v-once>{{ person.age }}</div>
+  </div>
+
+  <!-- development version, includes helpful console warnings -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+ 
+  <script>
+   let app = new Vue({
+    el: '#directives',
+    data: {
+     person: {
+      name: 'Evan You',
+      age: 28
+     }
+    }
+   })
+  </script>
+ </body>
+</html>

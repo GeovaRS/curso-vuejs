@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+ <head>
+  <title>VueJS - Diretiva v-bind com Argumentos Dinâmicos</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ </head>
+ <body>
+  <div id="directives">
+   <h2>Acesse o site</h2>
+   <!-- <a v-bind:href="url">HCode Treinamentos</a> -->
+   <a :href="url">HCode Treinamentos</a>
+   <!-- <p v-bind:[arg]="value"> -->
+   <p :[arg]="value">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, aliquid quibusdam. Ea eius veniam pariatur, veritatis assumenda dicta repellendus neque minus non. Necessitatibus quod explicabo doloribus fugiat assumenda voluptatum illo?
+   </p>
+  </div>
+
+  <!-- development version, includes helpful console warnings -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+ 
+  <script>
+   let app = new Vue({
+    el: '#directives',
+    data: {
+     url: 'https://www.hcode.com.br',
+     // url: 'https://www.youtube.com/hcodebrasil',
+     arg: 'title',
+     value: 'Parágrafo de Exemplo'
+    }
+   })
+  </script>
+ </body>
+</html>
