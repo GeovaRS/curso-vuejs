@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+ <head>
+  <title>VueJS - Eventos - Modificadores</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+ </head>
+ <body>
+  <div id="events">
+   <div class="container">
+    <h1>HCode Treinamentos</h1>
+    <form action="" class="form">
+     <div class="row">
+      <div class="col">
+       <div class="form-group">
+        <label for="">Nome</label>
+        <input type="text" class="form-control" placeholder="Digite seu nome"
+        name="username" />
+       </div>
+      </div>
+      <div class="col">
+       <div class="form-group">
+        <label for="">EMail</label>
+        <input type="text" class="form-control" placeholder="Digite seu EMail"
+        name="email" />
+       </div>
+      </div>
+     </div>
+     <div class="form-group">
+      <label for="">Digite sua mensagem</label>
+      <textarea name="message" id="" cols="30" rows="10" class="form-control">
+      </textarea>
+     </div>
+     <button type="submit" class="btn btn-primary"
+     v-on:click.prevent="send($event)">
+      Enviar
+     </button>
+    </form>
+    <hr />
+    <a href="https://www.youtube.com/hcodebrasil"
+    v-on:click.prevent.once="alertShow">
+     HCode Brasil - YouTube
+    </a>
+   </div>
+  </div>
+
+  <!-- development version, includes helpful console warnings -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+  <script>
+   let app = new Vue({
+    el: '#events',
+    data: {
+     
+    },
+    methods: {
+     send(event) {
+      let form = event.target.form;
+
+      let data = new FormData(form);
+      
+      for(let value of data.entries()) {
+       console.log(`${value[0]}: ${value[1]}`);
+      }
+     },
+     alertShow() {
+      alert('Olá');
+     }
+    }
+   })
+  </script>
+ </body>
+</html>

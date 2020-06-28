@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+ <head>
+  <title>VueJS - Eventos - Teclado Modificadores</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+ </head>
+ <body>
+  <div id="events">
+   <div class="container">
+    <h1>HCode Treinamentos</h1>
+    <form action="" class="form" v-on:submit.prevent>
+     <div class="row">
+      <div class="col">
+       <div class="form-group">
+        <label for="">Nome</label>
+        <input type="text" class="form-control" placeholder="Digite seu nome"
+        name="username" v-on:keyup.enter="send($event)" />
+       </div>
+      </div>
+     </div>
+     <div class="form-group">
+      <label for="">Pressione as teclas abaixo</label>
+
+      <input type="text" class="form-control"
+      placeholder="Pressione Enter" v-on:keyup.enter="exec" />
+      
+      <input type="text" class="form-control"
+      placeholder="Pressione Tab" v-on:keydown.tab="exec" />
+
+      <input type="text" class="form-control"
+      placeholder="Pressione Delete" v-on:keyup.delete="exec" />
+
+      <input type="text" class="form-control"
+      placeholder="Pressione Esc" v-on:keyup.esc="exec" />
+
+      <input type="text" class="form-control"
+      placeholder="Pressione Space" v-on:keyup.space="exec" />
+
+      <input type="text" class="form-control"
+      placeholder="Pressione Up Arrow" v-on:keyup.up="exec" />
+
+      <input type="text" class="form-control"
+      placeholder="Pressione Right Arrow" v-on:keyup.right="exec" />
+
+      <input type="text" class="form-control"
+      placeholder="Pressione Down Arrow" v-on:keyup.down="exec" />
+
+      <input type="text" class="form-control"
+      placeholder="Pressione Left Arrow" v-on:keyup.left="exec" />
+     </div>
+    </form>
+   </div>
+  </div>
+
+  <!-- development version, includes helpful console warnings -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+  <script>
+   let app = new Vue({
+    el: '#events',
+    data: {
+
+    },
+    methods: {
+     send(event) {
+      let form = event.target.form;
+
+      let data = new FormData(form);
+      
+      for(let value of data.entries()) {
+       console.log(`${value[0]}: ${value[1]}`);
+      }
+     },
+     alertShow() {
+      alert('Olá');
+     },
+     exec(e) {
+      console.log(e.key);
+     }
+    }
+   })
+  </script>
+ </body>
+</html>
