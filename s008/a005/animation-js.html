@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+ <head>
+  <title>VueJS - Animações JS</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="node_modules/animate.css/animate.min.css" />
+ </head>
+ <body>
+  <div id="transitions">
+   <transition
+   name="animation-first"
+   v-on:before-enter="beforeEnter"
+   v-on:enter="enter"
+   v-on:after-enter="afterEnter"
+   v-on:enter-cancelled="enterCancelled"
+
+   v-on:before-leave="beforeLeave"
+   v-on:leave="leave"
+   v-on:after-leave="afterLeave"
+   v-on:leave-cancelled="leaveCancelled"
+   >
+    <h2 v-if="show">HCode Treinamentos Animação</h2>
+   </transition>
+
+   <button v-on:click="show = !show">Realizar animação</button>
+  </div>
+
+  <!-- development version, includes helpful console warnings -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+  <script>
+   let app = new Vue({
+    el: '#transitions',
+    data: {
+     show: true
+    },
+    methods: {
+     beforeEnter() {
+      console.log('beforeEnter');
+     },
+     enter() {
+      console.log('enter');
+     },
+     afterEnter(element) {
+      console.log('afterEnter', element);
+      document.querySelector('h2').style.backgroundColor = '#ccc';
+      document.querySelector('h2').style.color = '#f00';
+     },
+     enterCancelled() {
+      console.log('enterCancelled');
+     },
+     beforeLeave() {
+      console.log('beforeLeave');
+     },
+     leave() {
+      console.log('leave');
+     },
+     afterLeave() {
+      console.log('afterLeave');
+      alert('Elemento foi ocultado');
+     },
+     leaveCancelled() {
+      console.log('leaveCancelled');
+     }
+    }
+   })
+  </script>
+ </body>
+</html>

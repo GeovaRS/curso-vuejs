@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "animate.css": "^3.7.2",
+    "bootstrap": "4.0.0",
+    "vue": "^2.6.11"
+  },
+  "name": "a005",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
