@@ -1,1 +1,1 @@
-# Primeiro Exemplo do Curso de VueJS da HCode Treinamentos
+Modelo de Estilização usado no Curso de VueJS da HCode Treinamentos

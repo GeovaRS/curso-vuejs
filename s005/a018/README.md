@@ -1,1 +1,1 @@
-# Primeiro Exemplo do Curso de VueJS da HCode Treinamentos
+Exemplo do uso das Diretivas Personalizadas do Curso de VueJS da HCode Treinamentos

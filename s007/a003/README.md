@@ -1,1 +1,1 @@
-# Primeiro Exemplo do Curso de VueJS da HCode Treinamentos
+Exemplo de Estilização InLine Múltipla usada no Curso de VueJS da HCode Treinamentos
