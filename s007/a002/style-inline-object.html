@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+ <head>
+  <title>VueJS - Estilização em Linha com Objetos</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ </head>
+ <body>
+  <div id="styles">
+   <input type="text" placeholder="Digite o tamanho da font"
+   v-model="fontSizeProp" />
+
+   <h2 v-bind:style="{ fontSize: fontSizeProp + 'px' }">Evan You</h2>
+   <hr />
+   <h2>Digite o valor de cada cor RGB nos campos abaixo</h2>
+   <input type="text" placeholder="Vermelho" v-model="styleRed" />
+   <input type="text" placeholder="Verde" v-model="styleGreen" />
+   <input type="text" placeholder="Azul" v-model="styleBlue" />
+
+   <!-- <div style="color: rgb(255, 105, 80)"> -->
+   <!-- <div v-bind:style="styleRGB"> -->
+   <div :style="styleRGB">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+    At sunt perferendis officiis cupiditate et blanditiis adipisci optio doloremque, officia amet!
+    Totam itaque natus, ipsum aperiam eum sed iusto ratione modi!
+   </div>
+  </div>
+
+  <!-- development version, includes helpful console warnings -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+  <script>
+   let app = new Vue({
+    el: '#styles',
+    data: {
+     fontSizeProp: 20,
+     styleRed: 20,
+     styleGreen: 255,
+     styleBlue: 80
+    },
+    computed: {
+     styleRGB() {
+      return {
+       color: `rgb(${this.styleRed}, ${this.styleGreen}, ${this.styleBlue})`
+      } 
+     }
+    }
+   })
+  </script>
+ </body>
+</html>

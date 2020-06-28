@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+ <head>
+  <title>VueJS - Estilização com Classes - Objetos</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
+  <style>
+   .logged {
+    color: #f00;
+    text-decoration: underline;
+   }
+  </style>
+ </head>
+ <body>
+  <div id="styles">
+   <h1  v-bind:class="{ logged: isLogged }">Bem vindo ao Sistema</h1>
+   <hr />
+   <h3 v-bind:class="classMessage">{{ message }}</h3>
+  </div>
+
+  <!-- development version, includes helpful console warnings -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+  <script>
+   let app = new Vue({
+    el: '#styles',
+    data: {
+     isLogged: false,
+     error: false
+    },
+    computed: {
+     message: function() {
+      return (!this.error) ? 'Está tudo bem' : 'Há algo errado';
+
+      // if(!this.error) {
+      //  return 'Está tudo bem';
+      // } else {
+      //  return 'Há algo errado';
+      // }
+     },
+     classMessage: function() {
+      return (!this.error) ? 'alert-success' : 'alert-danger';
+     }
+    }
+   })
+  </script>
+ </body>
+</html>

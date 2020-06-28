@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+ <head>
+  <title>VueJS - Estilização com Classes - Array</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
+  <style>
+   .selected {
+    text-decoration: underline;
+   }
+  </style>
+ </head>
+ <body>
+  <div id="styles">
+   <table class="table">
+    <tr v-for="city in cities">
+     <!-- <td v-bind:class="[selectedClass, statusClass]">{{ city }}</td> -->
+     <td v-bind:class="[selectedClass, error ? statusErrorClass : statusClass]">
+      {{ city }}
+     </td>
+    </tr>
+   </table>
+  </div>
+
+  <!-- development version, includes helpful console warnings -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+  <script>
+   let app = new Vue({
+    el: '#styles',
+    data: {
+     cities: ['Orlando', 'Londres', 'Sidney'],
+     selectedClass: 'selected',
+     statusClass: 'alert-success',
+     statusErrorClass: 'alert-danger',
+     error: false
+    }
+   })
+  </script>
+ </body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+ <head>
+  <title>VueJS - Estilização em Linha com Array</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ </head>
+ <body>
+  <div id="styles">
+   <!--
+    <a href="https://www.hcode.com.br" style="font-size: 30px; color: #f00;">
+   -->
+   <a href="https://www.hcode.com.br"
+   :style="[fontSizeStyle, colorStyle, linkStyle]">
+    HCode Treinamentos
+   </a>
+  </div>
+
+  <!-- development version, includes helpful console warnings -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+  <script>
+   let app = new Vue({
+    el: '#styles',
+    data: {
+     fontSizeStyle: {
+      fontSize: '30px'
+     },
+     colorStyle: {
+      color: '#f00'
+     },
+     linkStyle: {
+      textDecoration: 'none'
+     }
+    }
+   })
+  </script>
+ </body>
+</html>

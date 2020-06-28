@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+ <head>
+  <title>VueJS - Estilização em Linha com Objeto (Múltiplos Valores)</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ </head>
+ <body>
+  <div id="styles">
+   <div :style="{ display: displayStyle }">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+    At sunt perferendis officiis cupiditate et blanditiis adipisci optio doloremque, officia amet!
+    Totam itaque natus, ipsum aperiam eum sed iusto ratione modi!
+   </div>
+  </div>
+
+  <!-- development version, includes helpful console warnings -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+  <script>
+   let app = new Vue({
+    el: '#styles',
+    data: {
+     displayStyle: ['-webkit-box', '-moz-box-flex', '-ms-flexbox', 'flex']
+    }
+   })
+  </script>
+ </body>
+</html>
