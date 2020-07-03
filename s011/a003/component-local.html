@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+ <head>
+  <title>VueJS - Componentes - Local</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet"
+  href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
+ </head>
+ <body>
+  <div id="components">
+   <text-render text="HCode Treinamentos"></text-render>
+   <hr />
+   <list></list>
+  </div>
+
+  <!-- development version, includes helpful console warnings -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+  <script>
+   Vue.component('text-render', {
+    props: ['text'],
+    template: `
+     <div>
+      <h4>{{ text }}</h4>
+     </div>
+    `
+   });
+
+   /*
+    // Component Global
+    Vue.component('list-component', {
+     template: `
+      <div>
+       <ul>
+        <li v-for="person in names">{{ person }}</li>
+       </ul>
+      </div>
+     `,
+     data: function() {
+      return {
+       names: ['João Rangel', 'Gláucio Daniel', 'Djalma Sindeaux', 'Anthony Rafael']
+      }
+     }
+    });
+   */
+
+   let listItemComponent = {
+    props: ['name'],
+    template: '<li>{{ name }}</li>'
+   }
+
+   let listComponent = {
+    template: `
+     <div>
+      <ul>
+       <list-item v-for="person in names" v-bind:name="person"></list-item>
+      </ul>
+     </div>
+    `,
+    data: function() {
+     return {
+      names: ['João Rangel', 'Gláucio Daniel', 'Djalma Sindeaux']
+     }
+    },
+    components: {
+     listItem: listItemComponent
+    }
+   }
+
+   let app = new Vue({
+    el: '#components',
+    data: {
+     
+    },
+    components: {
+     list: listComponent
+    }
+   })
+  </script>
+ </body>
+</html>
