@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "animate.css": "^3.7.2",
-    "bootstrap": "4.0.0",
+    "bootstrap": "4.3.1",
     "vue": "^2.6.11"
   },
   "name": "a005",
